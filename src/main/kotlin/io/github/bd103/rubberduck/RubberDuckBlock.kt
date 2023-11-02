@@ -13,21 +13,27 @@ import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 
-private val settings = FabricBlockSettings.create().nonOpaque()
+private val settings = FabricBlockSettings.create()
+    .nonOpaque()
+    .strength(0.2F)
 
 object RubberDuckBlock : Block(settings) {
     init {
+        // Set the default rotation to north
         defaultState = defaultState.with(Properties.HORIZONTAL_FACING, Direction.NORTH)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>?) {
+        // Configure the duck to have a rotation property
         builder?.add(Properties.HORIZONTAL_FACING)
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext?): BlockState? {
+        // Make the duck rotate to face the player when placed
         return super.getPlacementState(ctx)?.with(Properties.HORIZONTAL_FACING, ctx?.horizontalPlayerFacing?.opposite)
     }
 
+    // Return the correct outline depending on rotation
     override fun getOutlineShape(
         state: BlockState?,
         world: BlockView?,
