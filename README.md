@@ -4,8 +4,8 @@ This is a simple rubber duck mod for [Fabric](https://fabricmc.net/), targeting 
 
 ## Dependencies
 
-- [Fabric API](https://modrinth.com/mod/fabric-api) >= 0.14.24
-- [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) >= 1.9.20
+- [Fabric API](https://modrinth.com/mod/fabric-api)
+- [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin)
 
 ## Credits
 
