@@ -1,6 +1,6 @@
 # Rubber Duck
 
-This is a simple rubber duck mod for [Fabric](https://fabricmc.net/), targeting Minecraft 1.20. It is a port of [salvadormg15's rubber duck mod for Forge](https://github.com/salvadormg15/Rubber-Duck), though some functionality has been changed. 
+This is a simple rubber duck mod for [Fabric](https://fabricmc.net/), targeting Minecraft 1.20.2. It is a port of [salvadormg15's rubber duck mod for Forge](https://github.com/salvadormg15/Rubber-Duck), though some functionality has been changed. 
 
 ## Dependencies
 
