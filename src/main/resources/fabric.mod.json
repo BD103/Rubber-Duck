@@ -3,7 +3,7 @@
     "id": "rubber_duck",
     "version": "${version}",
     "name": "Rubber Duck",
-    "description": "Adds rubber ducks to Minecraft!",
+    "description": "Add rubber ducks to Minecraft!",
     "authors": ["BD103"],
     "contact": {
         "homepage": "https://bd103.github.io",
@@ -27,5 +27,6 @@
         "java": ">=17",
         "fabric-api": "*",
         "fabric-language-kotlin": ">=1.9.20"
-    }
+    },
+    "contributors": ["salvadormg15"]
 }
