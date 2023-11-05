@@ -56,25 +56,25 @@ object RubberDuckBlock : Block(settings) {
 
         // TODO(BD103): More elegant solution than hardcoding duck outlines
         return when (direction) {
-            Direction.SOUTH -> VoxelShapes.cuboid(
-                5.0 / 16.0, 0.0 / 16.0, 5.0 / 16.0,
-                11.0 / 16.0, 8.0 / 16.0, 15.0 / 16.0,
+            Direction.SOUTH -> createCuboidShape(
+                5.0, 0.0, 5.0,
+                11.0, 8.0, 15.0
             )
 
-            Direction.EAST -> VoxelShapes.cuboid(
-                5.0 / 16.0, 0.0 / 16.0, 5.0 / 16.0,
-                15.0 / 16.0, 8.0 / 16.0, 11.0 / 16.0,
+            Direction.EAST -> createCuboidShape(
+                5.0, 0.0, 5.0,
+                15.0, 8.0, 11.0,
             )
 
-            Direction.WEST -> VoxelShapes.cuboid(
-                1.0 / 16.0, 0.0 / 16.0, 5.0 / 16.0,
-                11.0 / 16.0, 8.0 / 16.0, 11.0 / 16.0,
+            Direction.WEST -> createCuboidShape(
+                1.0, 0.0, 5.0,
+                11.0, 8.0, 11.0,
             )
 
             // North, and every other invalid state
-            else -> VoxelShapes.cuboid(
-                5.0 / 16.0, 0.0 / 16.0, 1.0 / 16.0,
-                11.0 / 16.0, 8.0 / 16.0, 11.0 / 16.0,
+            else -> createCuboidShape(
+                5.0, 0.0, 1.0,
+                11.0, 8.0, 11.0,
             )
         }
     }
