@@ -1,0 +1,29 @@
+{
+    "parent": "minecraft:husbandry/root",
+    "criteria": {
+        "picked_up_duck": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["rubber_duck:rubber_duck"]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "requirements": [
+        ["picked_up_duck"]
+    ],
+    "display": {
+        "icon": {
+            "item": "rubber_duck:rubber_duck"
+        },
+        "title": {
+            "translate": "advancements.rubber_duck.find_a_duck.title"
+        },
+        "description": {
+            "translate": "advancements.rubber_duck.find_a_duck.description"
+        }
+    }
+}
