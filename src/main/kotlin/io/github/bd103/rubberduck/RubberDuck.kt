@@ -39,7 +39,7 @@ object RubberDuck : ModInitializer {
                     // 10% chance of rolling a duck
                     LootPool.builder()
                         .with(ItemEntry.builder(RubberDuckItem).weight(1))
-                        .with(EmptyEntry.builder().weight(9))
+                        .with(EmptyEntry.builder().weight(4))
                 )
             }
         })
