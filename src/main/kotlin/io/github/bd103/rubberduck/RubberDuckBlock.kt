@@ -24,14 +24,16 @@ import net.minecraft.world.WorldAccess
 
 private val settings = FabricBlockSettings.create()
     .nonOpaque()
+    // Play wool sounds when walked upon
     .sounds(BlockSoundGroup.WOOL)
     .strength(0.2F)
     .mapColor(MapColor.YELLOW)
+    // Break when pushed by piston
     .pistonBehavior(PistonBehavior.DESTROY)
 
 object RubberDuckBlock : Block(settings), Waterloggable {
     init {
-        // Set the default rotation to north
+        // Defaults are facing north, not waterlogged
         defaultState = defaultState
             .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
             .with(Properties.WATERLOGGED, false)
@@ -42,12 +44,12 @@ object RubberDuckBlock : Block(settings), Waterloggable {
         builder.add(Properties.HORIZONTAL_FACING, Properties.WATERLOGGED)
     }
 
-    override fun getPlacementState(ctx: ItemPlacementContext): BlockState {
-        // Make the duck rotate to face the player when placed
-        return super.getPlacementState(ctx)!!
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState =
+        super.getPlacementState(ctx)!!
+            // Make the duck rotate to face the player when placed
             .with(Properties.HORIZONTAL_FACING, ctx.horizontalPlayerFacing?.opposite)
+            // Make duck waterlogged when placed in water
             .with(Properties.WATERLOGGED, ctx.world.getFluidState(ctx.blockPos).isOf(Fluids.WATER))
-    }
 
     // Render water overtop of duck when waterlogged
     override fun getFluidState(state: BlockState): FluidState = if (state.get(Properties.WATERLOGGED)) {
@@ -79,10 +81,17 @@ object RubberDuckBlock : Block(settings), Waterloggable {
         pos: BlockPos,
         context: ShapeContext,
     ): VoxelShape {
+        // Get direction of duck
+        // If for some reason retrieving this fails, default to full cube
         val direction = state.get(Properties.HORIZONTAL_FACING) ?: return VoxelShapes.fullCube()
 
         // TODO(BD103): More elegant solution than hardcoding duck outlines
         return when (direction) {
+            Direction.NORTH -> createCuboidShape(
+                5.0, 0.0, 1.0,
+                11.0, 8.0, 11.0,
+            )
+
             Direction.SOUTH -> createCuboidShape(
                 5.0, 0.0, 5.0,
                 11.0, 8.0, 15.0
@@ -98,11 +107,8 @@ object RubberDuckBlock : Block(settings), Waterloggable {
                 11.0, 8.0, 11.0,
             )
 
-            // North, and every other invalid state
-            else -> createCuboidShape(
-                5.0, 0.0, 1.0,
-                11.0, 8.0, 11.0,
-            )
+            // Should be impossible, but return full block if something goes wrong
+            else -> VoxelShapes.fullCube()
         }
     }
 
