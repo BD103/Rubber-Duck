@@ -22,11 +22,11 @@
         ]
     },
     "depends": {
-        "fabricloader": ">=0.14.24",
-        "minecraft": "~1.20.2",
-        "java": ">=17",
+        "fabricloader": ">=0.15",
+        "minecraft": "~1.20.5",
+        "java": ">=21",
         "fabric-api": "*",
-        "fabric-language-kotlin": ">=1.9.20"
+        "fabric-language-kotlin": ">=2.0.0"
     },
     "contributors": ["salvadormg15"]
 }
